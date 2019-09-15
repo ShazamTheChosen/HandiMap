@@ -1,9 +1,11 @@
 import re
+import random
 f = open('HandicapCoordinates.txt', 'r')
 a = open("latcoord.txt", 'w')
 b = open("longcoord.txt", 'w')
 f_line = f.readlines()
-
+#latitudes = []
+#longitudes = []
 for x in f_line:
     long = re.search('long_wgs84: (-\d\d\.\d*)', x)
     b.write(long.group(1)+"\n")
@@ -11,10 +13,13 @@ for x in f_line:
     lat = re.search('lat_wgs84: (\d\d\.\d*)', x)
     a.write(lat.group(1)+"\n")
 
+    #latitudes.append(lat.group(1))
+    #longitudes.append(long.group(1))
 #mMap.addMarker(new MarkerOptions().position(new LatLng(42.36,-71))
+#i = 0
 #for marker in zip(latitudes,longitudes):
- #   print("mMap.addMarker(new MarkerOptions().position(new LatLng("+str(marker[0])+','+ str(marker[1])+').title("Marker in Sydney")));')
-
+ #   print("mMap.addMarker(new MarkerOptions().position(new LatLng("+str(marker[0])+','+ str(marker[1])+')).title("'+str(i)+'").icon(BitmapDescriptorFactory.defaultMarker('+str(random.randint(0,300))+')));')
+  #  i +=1
 f.close()
 a.close()
 b.close()
