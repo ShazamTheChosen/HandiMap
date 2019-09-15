@@ -1,23 +1,20 @@
 import re
 f = open('HandicapCoordinates.txt', 'r')
+a = open("latcoord.txt", 'w')
+b = open("longcoord.txt", 'w')
 f_line = f.readlines()
-
-positions = []
 
 for x in f_line:
     long = re.search('long_wgs84: (-\d\d\.\d*)', x)
-    positions.append(long.group(1))
+    b.write(long.group(1)+"\n")
 
     lat = re.search('lat_wgs84: (\d\d\.\d*)', x)
-    positions.append(lat.group(1))
+    a.write(lat.group(1)+"\n")
 
-print(positions)
-#print(len(dictionaryList))
-
-
-
-
-
-
+#mMap.addMarker(new MarkerOptions().position(new LatLng(42.36,-71))
+#for marker in zip(latitudes,longitudes):
+ #   print("mMap.addMarker(new MarkerOptions().position(new LatLng("+str(marker[0])+','+ str(marker[1])+').title("Marker in Sydney")));')
 
 f.close()
+a.close()
+b.close()
